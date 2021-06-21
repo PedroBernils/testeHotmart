@@ -2,7 +2,7 @@
     <string name="app_name">TesteHotmart</string>
 
 <!--    Navigation-->
-    <string name="title_home">Home</string>
+    <string name="title_home">Café Escritório</string>
     <string name="title_map">Mapa</string>
     <string name="title_profile">Perfil</string>
 </resources>

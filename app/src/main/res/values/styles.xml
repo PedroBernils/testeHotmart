@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="HomeLocationNameStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/open_sans_semibold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/topaz</item>
+    </style>
+
+    <style name="HomeLocationTypeStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/open_sans</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/brownish_gray</item>
+    </style>
+
+    <style name="HomeLocationRatingStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/open_sans</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="locationRatingSmall" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/location_rating_small</item>
+    </style>
+
+</resources>

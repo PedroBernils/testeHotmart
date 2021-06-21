@@ -12,4 +12,8 @@
 
     <color name="status_bar">#207E86</color>
     <color name="topaz">#14adb8</color>
+    <color name="brownish_gray">#666666</color>
+    <color name="duck_egg_blue">#d0fdef</color>
+    <color name="light_pink">#ffdae0</color>
+    <color name="creme">#fcffb1</color>
 </resources>
