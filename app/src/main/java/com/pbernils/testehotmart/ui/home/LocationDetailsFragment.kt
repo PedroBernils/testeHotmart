@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.GridLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.MaterialToolbar
 import com.pbernils.testehotmart.R
 import com.pbernils.testehotmart.custom.ToolbarFragment
@@ -17,6 +20,7 @@ class LocationDetailsFragment : ToolbarFragment() {
     }
 
     private lateinit var detailsViewModel: LocationDetailsViewModel
+    private lateinit var photoAdapter: LocationDetailsPhotoAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,9 +46,17 @@ class LocationDetailsFragment : ToolbarFragment() {
         params.height = params.height + height
         gradient.layoutParams = params
 
-//        val collapsingToolbar = root.findViewById<CollapsingToolbarLayout>(R.id.colapsing_toolbar)
-//        collapsingToolbar.expand
+        photoAdapter = LocationDetailsPhotoAdapter()
 
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val layoutManager = GridLayoutManager(activity, 1, GridLayoutManager.HORIZONTAL, false)
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_photos)
+        recyclerView.layoutManager = layoutManager
+        recyclerView.adapter = photoAdapter
     }
 }

@@ -66,7 +66,7 @@
     </style>
 
     <style name="image_rounded_square">
-        <item name="cornerSize">7%</item>
+        <item name="cornerSize">12%</item>
     </style>
 
     <style name="image_circle">
