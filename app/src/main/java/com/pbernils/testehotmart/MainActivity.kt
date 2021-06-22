@@ -1,15 +1,23 @@
 package com.pbernils.testehotmart
 
 import android.app.Activity
+import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.BlendModeColorFilterCompat
+import androidx.core.graphics.BlendModeCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.pbernils.testehotmart.utils.Misc
 
 
 class MainActivity : AppCompatActivity() {
@@ -25,10 +33,15 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_map, R.id.navigation_notifications
+                R.id.navigation_home, R.id.navigation_map, R.id.navigation_profile
             )
         )
-        setupActionBarWithNavController(navController, appBarConfiguration)
+
+//        val toolbar = findViewById<MaterialToolbar>(R.id.toolbar)
+//        toolbar.setNavigationIconTint(Color.WHITE)
+//        toolbar.navigationIcon?.colorFilter = BlendModeColorFilterCompat.createBlendModeColorFilterCompat(
+//            ContextCompat.getColor(this, R.color.red), BlendModeCompat.SRC_ATOP)
+//
         navView.setupWithNavController(navController)
         navView.itemIconTintList = null
     }

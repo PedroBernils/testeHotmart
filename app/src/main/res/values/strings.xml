@@ -1,8 +1,18 @@
 <resources>
-    <string name="app_name">TesteHotmart</string>
+    <string name="app_name">Teste Hotmart</string>
 
-<!--    Navigation-->
-    <string name="title_home">Café Escritório</string>
+    <!--    Navigation-->
+    <string name="title_home">Home</string>
     <string name="title_map">Mapa</string>
     <string name="title_profile">Perfil</string>
+    <string name="title_activity_location_details">Location</string>
+
+    <!--    MenuToolbar-->
+    <string name="btn_share">Compartilhar</string>
+
+    <!--    LocationDetails-->
+    <string name="label_photos">Fotos</string>
+    <string name="label_about">Sobre</string>
+    <string name="label_reviews">Reviews</string>
+    <string name="btn_all_reviews">ver todos os %d reviews</string>
 </resources>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/label_photos"
+        android:text="@string/label_photos"
+        android:textColor="@color/topaz"
+        android:textAllCaps="true"
+        style="@style/LocationDetailsBodyTitle"
+        android:layout_marginStart="@dimen/details_margin"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="@dimen/details_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_photos"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label_photos"
+        tools:listitem="@layout/item_location_details_photo_cell" />
+
+    <TextView
+        android:id="@+id/label_about"
+        android:text="@string/label_about"
+        android:textColor="@color/topaz"
+        android:textAllCaps="true"
+        style="@style/LocationDetailsBodyTitle"
+        android:layout_marginStart="@dimen/details_margin"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="@dimen/details_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recycler_photos" />
+
+    <TextView
+        android:id="@+id/text_about"
+        android:text="Text about"
+        android:textColor="@color/black_text"
+        style="@style/LocationDetailsBodyAbout"
+        android:layout_marginStart="@dimen/details_margin"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="@dimen/details_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label_about"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="Bacon ipsum dolor amet hamburger tri-tip capicola rump. Pig chicken ball tip flank, turducken hamburger turkey prosciutto jerky beef ribs tenderloin pancetta pork chop kielbasa ribeye. Beef ribs jerky pastrami brisket t-bone sirloin spare ribs venison turkey doner chicken flank prosciutto."/>
+
+    <ImageView
+        android:id="@+id/icon_time"
+        android:src="@drawable/ic_time"
+        android:layout_marginStart="@dimen/details_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/text_schedule"/>
+
+    <TextView
+        android:id="@+id/text_schedule"
+        android:text="Schedule"
+        android:textColor="@color/black_text"
+        style="@style/LocationDetailsBodySmallerText"
+        android:layout_marginStart="10.5dp"
+        android:layout_marginTop="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/icon_time"
+        app:layout_constraintTop_toBottomOf="@id/text_about"
+        tools:text="seg a sex: 7h às 23h\nsáb e dom: 8h às 20h" />
+
+    <ImageView
+        android:id="@+id/icon_phone"
+        android:src="@drawable/ic_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/icon_time"
+        app:layout_constraintTop_toTopOf="@+id/text_phone"
+        app:layout_constraintEnd_toEndOf="@id/icon_time"/>
+
+    <TextView
+        android:id="@+id/text_phone"
+        android:text="Phone"
+        android:textColor="@color/black_text"
+        style="@style/LocationDetailsBodySmallerText"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="22dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/icon_time"
+        app:layout_constraintTop_toBottomOf="@id/text_schedule"
+        tools:text="+55 31 98892 5338" />
+
+    <ImageView
+        android:id="@+id/icon_pin"
+        android:src="@drawable/ic_pin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/icon_time"
+        app:layout_constraintTop_toTopOf="@+id/text_address"
+        app:layout_constraintEnd_toEndOf="@id/icon_time"/>
+
+    <TextView
+        android:id="@+id/text_address"
+        android:text="Address"
+        android:textColor="@color/black_text"
+        style="@style/LocationDetailsBodySmallerText"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="19dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/icon_time"
+        app:layout_constraintTop_toBottomOf="@id/text_phone"
+        tools:text="Rua do ouro, 297 - Serra\nBelo Horizonte - MG" />
+</androidx.constraintlayout.widget.ConstraintLayout>

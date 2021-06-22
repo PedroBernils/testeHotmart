@@ -8,9 +8,11 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.appbar.MaterialToolbar
 import com.pbernils.testehotmart.R
+import com.pbernils.testehotmart.custom.ToolbarFragment
 
-class ProfileFragment : Fragment() {
+class ProfileFragment : ToolbarFragment() {
 
     private lateinit var profileViewModel: ProfileViewModel
 
@@ -21,7 +23,12 @@ class ProfileFragment : Fragment() {
     ): View? {
         profileViewModel =
                 ViewModelProvider(this).get(ProfileViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_notifications, container, false)
+        val root = inflater.inflate(R.layout.fragment_profile, container, false)
+        val toolbar = root.findViewById<MaterialToolbar>(R.id.toolbar)
+        toolbar.title = getString(R.string.title_profile)
+
+        setupToolbar(root)
+
         val textView: TextView = root.findViewById(R.id.text_notifications)
         profileViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it

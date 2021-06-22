@@ -16,4 +16,10 @@
     <color name="duck_egg_blue">#d0fdef</color>
     <color name="light_pink">#ffdae0</color>
     <color name="creme">#fcffb1</color>
+    <color name="black_text">#333333</color>
+    <color name="pinkish_grey">#cccccc</color>
+    <color name="warm_grey">#999999</color>
+    <color name="aqua_green">#16e5a3</color>
+    <color name="reddish">#ff5876</color>
+    <color name="cyanish">#13ceda</color>
 </resources>

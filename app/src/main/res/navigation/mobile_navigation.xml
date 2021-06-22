@@ -9,7 +9,12 @@
         android:id="@+id/navigation_home"
         android:name="com.pbernils.testehotmart.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+
+        <action
+            android:id="@+id/action_home_to_details"
+            app:destination="@id/navigation_location_details" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_map"
@@ -18,8 +23,14 @@
         tools:layout="@layout/fragment_map" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_profile"
         android:name="com.pbernils.testehotmart.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/navigation_location_details"
+        android:name="com.pbernils.testehotmart.ui.home.LocationDetailsFragment"
+        android:label="@string/title_activity_location_details"
+        tools:layout="@layout/fragment_map" />
 </navigation>

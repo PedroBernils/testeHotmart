@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/border"
+        android:background="@color/white"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:padding="1dp"
+        app:shapeAppearanceOverlay="@style/image_circle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="@color/pinkish_grey"
+        app:strokeWidth="0.5dp" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/avatar"
+        android:src="@color/aqua_green"
+        android:scaleType="centerCrop"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:shapeAppearanceOverlay="@style/image_circle"
+        app:layout_constraintStart_toStartOf="@id/border"
+        app:layout_constraintTop_toTopOf="@id/border"
+        app:layout_constraintEnd_toEndOf="@id/border"
+        app:layout_constraintBottom_toBottomOf="@id/border"
+        tools:srcCompat="@drawable/yamaga" />
+
+    <TextView
+        android:id="@+id/initials"
+        android:text="MM"
+        android:textColor="@color/white"
+        style="@style/LocationDetailsReviewInitials"
+        android:gravity="center"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintStart_toStartOf="@id/border"
+        app:layout_constraintTop_toTopOf="@id/border"
+        app:layout_constraintEnd_toEndOf="@id/border"
+        app:layout_constraintBottom_toBottomOf="@id/border"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:paddingBottom="32dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/avatar"
+        app:layout_constraintTop_toTopOf="@+id/avatar"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/rating_1"
+            android:src="@drawable/ic_star_small_off"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView
+            android:id="@+id/rating_2"
+            android:src="@drawable/ic_star_small_off"
+            android:layout_marginStart="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/rating_1"
+            app:layout_constraintTop_toTopOf="@+id/rating_1"
+            app:layout_constraintBottom_toBottomOf="@id/rating_1"/>
+
+        <ImageView
+            android:id="@+id/rating_3"
+            android:src="@drawable/ic_star_small_off"
+            android:layout_marginStart="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/rating_2"
+            app:layout_constraintTop_toTopOf="@+id/rating_2"
+            app:layout_constraintBottom_toBottomOf="@id/rating_2"/>
+
+        <ImageView
+            android:id="@+id/rating_4"
+            android:src="@drawable/ic_star_small_off"
+            android:layout_marginStart="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/rating_3"
+            app:layout_constraintTop_toTopOf="@+id/rating_3"
+            app:layout_constraintBottom_toBottomOf="@id/rating_3"/>
+
+        <ImageView
+            android:id="@+id/rating_5"
+            android:src="@drawable/ic_star_small_off"
+            android:layout_marginStart="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/rating_4"
+            app:layout_constraintTop_toTopOf="@+id/rating_4"
+            app:layout_constraintBottom_toBottomOf="@id/rating_4"/>
+
+        <TextView
+            android:id="@+id/review_title"
+            android:text="Title"
+            android:textColor="@color/topaz"
+            style="@style/LocationDetailsReviewTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rating_1"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/review_body"
+            android:text="Body"
+            android:textColor="@color/brownish_gray"
+            style="@style/LocationDetailsReviewBody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/review_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Bacon ipsum dolor amet hamburger tri-tip capicola rump. Pig chicken ball tip flank, turducken hamburger turkey prosciutto jerky beef ribs tenderloin pancetta pork chop kielbasa ribeye."/>
+
+        <TextView
+            android:id="@+id/review_author"
+            android:text="Author"
+            android:textColor="@color/warm_grey"
+            style="@style/LocationDetailsReviewAuthor"
+            android:layout_marginTop="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/review_body"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Tomás Montenegro, Belo Horizonte - MG"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
