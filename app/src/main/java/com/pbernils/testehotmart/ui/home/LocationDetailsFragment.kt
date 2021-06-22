@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.MaterialToolbar
 import com.pbernils.testehotmart.R
@@ -21,6 +21,7 @@ class LocationDetailsFragment : ToolbarFragment() {
 
     private lateinit var detailsViewModel: LocationDetailsViewModel
     private lateinit var photoAdapter: LocationDetailsPhotoAdapter
+    private lateinit var reviewAdapter: LocationDetailsReviewAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,6 +48,7 @@ class LocationDetailsFragment : ToolbarFragment() {
         gradient.layoutParams = params
 
         photoAdapter = LocationDetailsPhotoAdapter()
+        reviewAdapter = LocationDetailsReviewAdapter()
 
         return root
     }
@@ -54,9 +56,14 @@ class LocationDetailsFragment : ToolbarFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val layoutManager = GridLayoutManager(activity, 1, GridLayoutManager.HORIZONTAL, false)
-        val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_photos)
-        recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = photoAdapter
+        val gridLayoutManager = GridLayoutManager(activity, 1, GridLayoutManager.HORIZONTAL, false)
+        val recyclerViewPhotos = view.findViewById<RecyclerView>(R.id.recycler_photos)
+        recyclerViewPhotos.layoutManager = gridLayoutManager
+        recyclerViewPhotos.adapter = photoAdapter
+
+        val linearLayoutManager = LinearLayoutManager(activity)
+        val recyclerViewReviews = view.findViewById<RecyclerView>(R.id.recycler_reviews)
+        recyclerViewReviews.layoutManager = linearLayoutManager
+        recyclerViewReviews.adapter = reviewAdapter
     }
 }

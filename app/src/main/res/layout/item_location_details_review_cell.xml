@@ -47,9 +47,11 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
         android:paddingBottom="32dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/avatar"
-        app:layout_constraintTop_toTopOf="@+id/avatar"
+        android:fitsSystemWindows="true"
+        app:layout_constraintStart_toEndOf="@id/border"
+        app:layout_constraintTop_toTopOf="@+id/border"
         app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
@@ -107,13 +109,14 @@
             style="@style/LocationDetailsReviewTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/rating_1"
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <TextView
             android:id="@+id/review_body"
-            android:text="Body"
+            android:text="Bacon ipsum dolor amet hamburger tri-tip capicola rump. Pig chicken ball tip flank, turducken hamburger turkey prosciutto jerky beef ribs tenderloin pancetta pork chop kielbasa ribeye."
             android:textColor="@color/brownish_gray"
             style="@style/LocationDetailsReviewBody"
             android:layout_width="match_parent"
