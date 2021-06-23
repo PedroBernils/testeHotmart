@@ -43,7 +43,16 @@ data class Schedule(
 
         var text = ""
 
-        val hours = listOf(sunday!!, monday!!, tuesday!!, wednesday!!, thursday!!, friday!!, saturday!!)
+        var hours = ArrayList<WorkingHours>()
+
+        sunday?.let { hours.add(it) }
+        monday?.let { hours.add(it) }
+        tuesday?.let { hours.add(it) }
+        wednesday?.let { hours.add(it) }
+        thursday?.let { hours.add(it) }
+        friday?.let { hours.add(it) }
+        saturday?.let { hours.add(it) }
+
         val groups = hours.groupBy { it.toCompare() }
 
         val keys = groups.keys
@@ -53,7 +62,13 @@ data class Schedule(
         }
 
         if (keys.size == 1) {
-            return context.getString(R.string.text_all_days, sunday.open, sunday.close)
+            sunday?.let { return context.getString(R.string.text_all_days, it.open, it.close) }
+            monday?.let { return context.getString(R.string.text_all_days, it.open, it.close) }
+            tuesday?.let { return context.getString(R.string.text_all_days, it.open, it.close) }
+            wednesday?.let { return context.getString(R.string.text_all_days, it.open, it.close) }
+            thursday?.let { return context.getString(R.string.text_all_days, it.open, it.close) }
+            friday?.let { return context.getString(R.string.text_all_days, it.open, it.close) }
+            saturday?.let { return context.getString(R.string.text_all_days, it.open, it.close) }
         }
 
         for (key in keys) {
