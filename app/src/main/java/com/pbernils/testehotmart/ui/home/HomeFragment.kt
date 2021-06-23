@@ -47,6 +47,8 @@ class HomeFragment : ToolbarFragment() {
             }
         }
 
+        homeViewModel.fetchLocationList()
+
         root.btn_reload.setOnClickListener {
             root.progress_circular.visibility = View.VISIBLE
             root.error_view.visibility = View.GONE
@@ -78,7 +80,5 @@ class HomeFragment : ToolbarFragment() {
         val recyclerView = view.recycler_view
         recyclerView.layoutManager = locationManager
         recyclerView.adapter = locationAdapter
-
-        homeViewModel.fetchLocationList()
     }
 }

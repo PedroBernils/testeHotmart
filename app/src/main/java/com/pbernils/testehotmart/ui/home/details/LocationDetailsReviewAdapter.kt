@@ -1,4 +1,4 @@
-package com.pbernils.testehotmart.ui.home
+package com.pbernils.testehotmart.ui.home.details
 
 import android.content.Context
 import android.graphics.drawable.ColorDrawable

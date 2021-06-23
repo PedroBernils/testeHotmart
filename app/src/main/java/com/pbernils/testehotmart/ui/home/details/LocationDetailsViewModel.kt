@@ -1,14 +1,12 @@
-package com.pbernils.testehotmart.ui.home
+package com.pbernils.testehotmart.ui.home.details
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.*
 import com.google.gson.JsonParseException
 import com.pbernils.testehotmart.R
 import com.pbernils.testehotmart.api.LocationService
 import com.pbernils.testehotmart.api.RetrofitHelper
 import com.pbernils.testehotmart.model.LocationDetails
-import com.pbernils.testehotmart.model.LocationList
 import kotlinx.coroutines.launch
 import java.net.UnknownHostException
 

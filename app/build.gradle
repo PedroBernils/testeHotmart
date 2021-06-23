@@ -9,14 +9,24 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
-    defaultConfig {
-        applicationId "com.pbernils.testehotmart"
-        minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+    def versionPropsFile = file('version.properties')
+    if (versionPropsFile.canRead()) {
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        def Properties versionProps = new Properties()
+        versionProps.load(new FileInputStream(versionPropsFile))
+        def code = versionProps['VERSION_CODE'].toInteger() + 1
+
+        defaultConfig {
+            applicationId "com.pbernils.testehotmart"
+            minSdkVersion 21
+            targetSdkVersion 29
+            versionCode code
+            versionName "1.0"
+
+            testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        }
+    } else {
+        throw new GradleException("Could not read version.properties!")
     }
 
     buildTypes {

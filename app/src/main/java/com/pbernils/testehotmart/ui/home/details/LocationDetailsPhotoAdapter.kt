@@ -1,11 +1,10 @@
-package com.pbernils.testehotmart.ui.home
+package com.pbernils.testehotmart.ui.home.details
 
 import android.content.Context
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.pbernils.testehotmart.R
 import com.pbernils.testehotmart.utils.Misc

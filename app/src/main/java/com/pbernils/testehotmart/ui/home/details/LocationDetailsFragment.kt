@@ -1,4 +1,4 @@
-package com.pbernils.testehotmart.ui.home
+package com.pbernils.testehotmart.ui.home.details
 
 import android.content.Context
 import android.graphics.drawable.ColorDrawable
@@ -26,10 +26,6 @@ import kotlinx.android.synthetic.main.fragment_location_details_reviews.view.*
 import kotlinx.android.synthetic.main.item_error_view.view.*
 
 class LocationDetailsFragment : ToolbarFragment() {
-
-    companion object {
-        fun newInstance() = LocationDetailsFragment()
-    }
 
     private lateinit var detailsViewModel: LocationDetailsViewModel
     private lateinit var photoAdapter: LocationDetailsPhotoAdapter

@@ -30,7 +30,7 @@
 
     <fragment
         android:id="@+id/navigation_location_details"
-        android:name="com.pbernils.testehotmart.ui.home.LocationDetailsFragment"
+        android:name="com.pbernils.testehotmart.ui.home.details.LocationDetailsFragment"
         android:label="@string/title_activity_location_details"
         tools:layout="@layout/fragment_map" />
 </navigation>
