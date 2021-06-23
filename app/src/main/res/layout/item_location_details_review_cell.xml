@@ -19,7 +19,7 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/avatar"
-        android:src="@color/topaz"
+        android:background="@color/topaz"
         android:scaleType="centerCrop"
         android:layout_width="50dp"
         android:layout_height="50dp"

@@ -21,10 +21,49 @@ data class LocationDetails(
 
     fun grabPhotos() {
         photos = ArrayList()
-        val number = (0..12).random()
+        val number = (-1..12).random()
         for (i in number downTo 0) {
             photos.add(Misc.getRandomImageUrl())
         }
+    }
+
+    fun grabReviews() {
+        reviews = ArrayList()
+        val number = (-1..2).random()
+        for (i in number downTo 0) {
+            reviews.add(
+                Review(
+                    listOf("Fantástico!!",
+                        "Café da manhã delicioso",
+                        "Ótima comida",
+                        "Preço justo",
+                        "Não gostei").random(),
+                    listOf("Tortas deliciosas. Os waffles também estavam muito bons. Equipe muito atenciosa. :)",
+                        "Nós fomos para o brunch e estava realmente delicioso. Pães, ovos, café, sucos naturais. Não é muito barato mas vale a pena.",
+                        "Comidas frescas e de boa qualidade. Pães e quitandas saindo do forno toda hora. Cafés especiais e ambiente agradável.").random(),
+                    (0..5).random().toFloat(),
+                    listOf("Tomás Montenegro",
+                        "Glória Ruiz",
+                        "Shirley Jones",
+                        "Spike Spiegel").random(),
+                    listOf("",
+                        "https://i.imgur.com/w3ahtXu.png",
+                        "https://i.imgur.com/h4icmaK.png",
+                        "https://i.imgur.com/T5UndsB.png",
+                        "https://i.imgur.com/Ov0pLVc.png",
+                        "https://i.imgur.com/bNmtgrh.png").random(),
+                    listOf("Belo Horizonte - MG",
+                        "São João Del Rey - MG",
+                        "Mountain View - CA",
+                        "São Paulo - SP").random()
+                )
+            )
+        }
+    }
+
+    fun getReviewCount() = when(reviews.size) {
+            0,1,2 -> reviews.size
+            else -> (reviews.size..230).random()
     }
 }
 
@@ -143,5 +182,20 @@ data class Review(
     val body: String,
     val rating: Float,
     val authorName: String,
-    val authorAvatar: String
-)
+    val authorAvatar: String,
+    val location: String
+) {
+
+    fun getInitials(): String {
+
+        val parts = authorName.split(" ")
+
+        var initials = ""
+
+        for (item in parts) {
+            initials = "$initials${item.substring(0,1)}"
+        }
+
+        return initials
+    }
+}

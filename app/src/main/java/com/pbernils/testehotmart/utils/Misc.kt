@@ -20,6 +20,17 @@ object Misc {
         )
     }
 
+    fun getRandomAvatarColor(context: Context): Int {
+
+        return ContextCompat.getColor(
+            context, listOf(
+                R.color.aqua_green,
+                R.color.reddish,
+                R.color.cyanish
+            ).random()
+        )
+    }
+
     fun getRandomImageUrl(): String {
         return listOf(
             "https://i.imgur.com/VInCihc.jpg",

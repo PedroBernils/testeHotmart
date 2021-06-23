@@ -55,7 +55,7 @@ class LocationDetailsFragment : ToolbarFragment() {
         gradient.layoutParams = params
 
         photoAdapter = LocationDetailsPhotoAdapter(activity as Context)
-        reviewAdapter = LocationDetailsReviewAdapter()
+        reviewAdapter = LocationDetailsReviewAdapter(activity as Context)
 
         fetchLocationDetails(root)
 
@@ -175,11 +175,19 @@ class LocationDetailsFragment : ToolbarFragment() {
             root.text_address.text = locationDetails.address
         }
 
+        locationDetails.grabReviews()
+
         reviewAdapter.data = locationDetails.reviews
         reviewAdapter.notifyDataSetChanged()
 
         if (reviewAdapter.itemCount < 1) {
             root.layout_reviews.visibility = View.GONE
+        } else {
+            if (locationDetails.getReviewCount() > locationDetails.reviews.size) {
+                root.text_all_reviews.text = getString(R.string.btn_all_reviews, locationDetails.getReviewCount())
+            } else {
+                root.btn_all_reviews.visibility = View.GONE
+            }
         }
     }
 }
