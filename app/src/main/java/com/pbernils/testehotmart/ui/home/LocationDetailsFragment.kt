@@ -6,17 +6,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.appbar.AppBarLayout
-import com.google.android.material.appbar.MaterialToolbar
 import com.pbernils.testehotmart.MainActivity
 import com.pbernils.testehotmart.R
 import com.pbernils.testehotmart.custom.ToolbarFragment
@@ -59,7 +54,7 @@ class LocationDetailsFragment : ToolbarFragment() {
         params.height = params.height + height
         gradient.layoutParams = params
 
-        photoAdapter = LocationDetailsPhotoAdapter()
+        photoAdapter = LocationDetailsPhotoAdapter(activity as Context)
         reviewAdapter = LocationDetailsReviewAdapter()
 
         fetchLocationDetails(root)
@@ -137,6 +132,8 @@ class LocationDetailsFragment : ToolbarFragment() {
         )
 
         RatingHelper.displayRating(ratingValue.toInt(), stars)
+
+        locationDetails.grabPhotos()
 
         photoAdapter.data = locationDetails.photos
         photoAdapter.notifyDataSetChanged()

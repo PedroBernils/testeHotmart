@@ -3,6 +3,7 @@ package com.pbernils.testehotmart.model
 import android.content.Context
 import com.google.gson.annotations.SerializedName
 import com.pbernils.testehotmart.R
+import com.pbernils.testehotmart.utils.Misc
 
 data class LocationDetails(
     @SerializedName("id") val id: Int,
@@ -14,9 +15,18 @@ data class LocationDetails(
     @SerializedName("phone") val phone: String,
     @SerializedName("adress") val address: String,
     @SerializedName("schedule") val schedule: Schedule,
-    val photos: List<String>,
-    val reviews: List<Review>
-)
+    var photos: ArrayList<String>,
+    var reviews: ArrayList<Review>
+) {
+
+    fun grabPhotos() {
+        photos = ArrayList()
+        val number = (0..12).random()
+        for (i in number downTo 0) {
+            photos.add(Misc.getRandomImageUrl())
+        }
+    }
+}
 
 data class Schedule(
     @SerializedName("sunday") val sunday: WorkingHours?,

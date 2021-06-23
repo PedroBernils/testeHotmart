@@ -40,8 +40,8 @@ class LocationDetailsViewModel(application: Application) : AndroidViewModel(appl
             _errorMessage.value = getString(R.string.error_message_no_connection)
         } catch (e: JsonParseException) {
             _errorMessage.value = getString(R.string.error_message_general)
-        } catch (e: Exception) {
-            _errorMessage.value = getString(R.string.error_message_unexpected)
+//        } catch (e: Exception) {
+//            _errorMessage.value = getString(R.string.error_message_unexpected)
         }
     }
 
