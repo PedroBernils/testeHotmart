@@ -31,22 +31,17 @@ class LocationDetailsViewModel(application: Application) : AndroidViewModel(appl
             if (call.isSuccessful) {
                 call.body()?.let {
                     _locationDetails.value = call.body()
-                    Log.e("z_what", "C: ${call.body().toString()}")
                 }
             } else {
-//                _errorMessage.value = getString(R.string.error_message_general)
-                Log.e("z_what", "Bad")
+                _errorMessage.value = getString(R.string.error_message_general)
             }
 
         } catch (e: UnknownHostException) {
-//            _errorMessage.value = getString(R.string.error_message_no_connection)
-            Log.e("z_what", "Unk")
+            _errorMessage.value = getString(R.string.error_message_no_connection)
         } catch (e: JsonParseException) {
-//            _errorMessage.value = getString(R.string.error_message_general)
-            Log.e("z_what", "Json ${e.message}")
+            _errorMessage.value = getString(R.string.error_message_general)
         } catch (e: Exception) {
-//            _errorMessage.value = getString(R.string.error_message_unexpected)
-            Log.e("z_what", "Ex")
+            _errorMessage.value = getString(R.string.error_message_unexpected)
         }
     }
 
@@ -54,5 +49,9 @@ class LocationDetailsViewModel(application: Application) : AndroidViewModel(appl
         viewModelScope.launch {
             getLocationsDetails(id)
         }
+    }
+
+    private fun getString(resId: Int): String {
+        return getApplication<Application>().getString(resId)
     }
 }

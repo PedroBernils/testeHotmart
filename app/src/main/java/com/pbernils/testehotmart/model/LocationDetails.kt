@@ -17,13 +17,13 @@ data class LocationDetails(
 )
 
 data class Schedule(
-    @SerializedName("sunday") val sunday: WorkingHours?,
-    @SerializedName("monday") val monday: WorkingHours?,
-    @SerializedName("tuesday") val tuesday: WorkingHours?,
-    @SerializedName("wednesday") val wednesday: WorkingHours?,
-    @SerializedName("thursday") val thursday: WorkingHours?,
-    @SerializedName("friday") val friday: WorkingHours?,
-    @SerializedName("saturday") val saturday: WorkingHours?
+    @SerializedName("sunday") val sunday: WorkingHours,
+    @SerializedName("monday") val monday: WorkingHours,
+    @SerializedName("tuesday") val tuesday: WorkingHours,
+    @SerializedName("wednesday") val wednesday: WorkingHours,
+    @SerializedName("thursday") val thursday: WorkingHours,
+    @SerializedName("friday") val friday: WorkingHours,
+    @SerializedName("saturday") val saturday: WorkingHours
 )
 
 data class WorkingHours(

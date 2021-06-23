@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.Observer
@@ -19,6 +20,7 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.pbernils.testehotmart.MainActivity
 import com.pbernils.testehotmart.R
 import com.pbernils.testehotmart.custom.ToolbarFragment
+import com.pbernils.testehotmart.model.LocationDetails
 import com.pbernils.testehotmart.utils.RatingHelper
 
 class LocationDetailsFragment : ToolbarFragment() {
@@ -53,75 +55,24 @@ class LocationDetailsFragment : ToolbarFragment() {
         photoAdapter = LocationDetailsPhotoAdapter()
         reviewAdapter = LocationDetailsReviewAdapter()
 
-        val main = activity as MainActivity
-        main.getLocationId().observe(viewLifecycleOwner, Observer {
-            detailsViewModel.fetchLocationDetails(it)
-        })
+        fetchLocationDetails()
+
+        root.findViewById<Button>(R.id.btn_reload).setOnClickListener {
+            root.findViewById<View>(R.id.progress_circular).visibility = View.VISIBLE
+            root.findViewById<View>(R.id.error_view).visibility = View.GONE
+            fetchLocationDetails()
+        }
 
         detailsViewModel.locationDetails.observe(viewLifecycleOwner, Observer {
+            reloadView(root, it)
+        })
 
-            if (it.photo.isNullOrBlank()) {
-                root.findViewById<AppBarLayout>(R.id.app_bar).setExpanded(false)
-            }
-
-            root.findViewById<TextView>(R.id.location_name).text = it.name
-
-            val ratingValue = it.rating
-            root.findViewById<TextView>(R.id.location_rating).text = "$ratingValue"
-
-            val stars = listOf<ImageView>(
-                root.findViewById(R.id.rating_1),
-                root.findViewById(R.id.rating_2),
-                root.findViewById(R.id.rating_3),
-                root.findViewById(R.id.rating_4),
-                root.findViewById(R.id.rating_5)
-            )
-
-            RatingHelper.displayRating(ratingValue.toInt(), stars)
-
-            photoAdapter.data = it.photos
-            photoAdapter.notifyDataSetChanged()
-
-            if (photoAdapter.itemCount < 1) {
-                root.findViewById<View>(R.id.label_photos).visibility = View.GONE
-                root.findViewById<View>(R.id.recycler_photos).visibility = View.GONE
-            }
-
-            if (it.about.isNullOrBlank()) {
-                root.findViewById<View>(R.id.label_about).visibility = View.GONE
-                root.findViewById<View>(R.id.text_about).visibility = View.GONE
-            } else {
-                root.findViewById<TextView>(R.id.text_about).text = it.about
-            }
-
-            // Schedule
-//            if (it.phone.isNullOrBlank()) {
-//                root.findViewById<View>(R.id.icon_phone).visibility = View.GONE
-//                root.findViewById<View>(R.id.text_phone).visibility = View.GONE
-//            } else {
-//                root.findViewById<TextView>(R.id.text_phone).text = it.phone
-//            }
-
-            if (it.phone.isNullOrBlank()) {
-                root.findViewById<View>(R.id.icon_phone).visibility = View.GONE
-                root.findViewById<View>(R.id.text_phone).visibility = View.GONE
-            } else {
-                root.findViewById<TextView>(R.id.text_phone).text = it.phone
-            }
-
-            if (it.address.isNullOrBlank()) {
-                root.findViewById<View>(R.id.icon_pin).visibility = View.GONE
-                root.findViewById<View>(R.id.text_address).visibility = View.GONE
-            } else {
-                root.findViewById<TextView>(R.id.text_address).text = it.address
-            }
-
-            reviewAdapter.data = it.reviews
-            reviewAdapter.notifyDataSetChanged()
-
-            if (reviewAdapter.itemCount < 1) {
-                root.findViewById<View>(R.id.layout_reviews).visibility = View.GONE
-            }
+        detailsViewModel.errorMessage.observe(viewLifecycleOwner, Observer {
+            root.findViewById<View>(R.id.nested_scroll).visibility = View.GONE
+            root.findViewById<View>(R.id.progress_circular).visibility = View.GONE
+            root.findViewById<View>(R.id.error_view).visibility = View.VISIBLE
+            val errorTextView = root.findViewById<TextView>(R.id.error_message)
+            errorTextView.text = it
         })
 
         return root
@@ -139,5 +90,83 @@ class LocationDetailsFragment : ToolbarFragment() {
         val recyclerViewReviews = view.findViewById<RecyclerView>(R.id.recycler_reviews)
         recyclerViewReviews.layoutManager = linearLayoutManager
         recyclerViewReviews.adapter = reviewAdapter
+    }
+
+    private fun fetchLocationDetails() {
+
+        val main = activity as MainActivity
+        main.getLocationId().observe(viewLifecycleOwner, Observer {
+            detailsViewModel.fetchLocationDetails(it)
+        })
+    }
+
+    private fun reloadView(root: View, locationDetails: LocationDetails) {
+
+        root.findViewById<View>(R.id.progress_circular).visibility = View.GONE
+        root.findViewById<View>(R.id.error_view).visibility = View.GONE
+        root.findViewById<View>(R.id.nested_scroll).visibility = View.VISIBLE
+
+        if (locationDetails.photo.isNullOrBlank()) {
+            root.findViewById<AppBarLayout>(R.id.app_bar).setExpanded(false)
+        }
+
+        root.findViewById<TextView>(R.id.location_name).text = locationDetails.name
+
+        val ratingValue = locationDetails.rating
+        root.findViewById<TextView>(R.id.location_rating).text = "$ratingValue"
+
+        val stars = listOf<ImageView>(
+            root.findViewById(R.id.rating_1),
+            root.findViewById(R.id.rating_2),
+            root.findViewById(R.id.rating_3),
+            root.findViewById(R.id.rating_4),
+            root.findViewById(R.id.rating_5)
+        )
+
+        RatingHelper.displayRating(ratingValue.toInt(), stars)
+
+        photoAdapter.data = locationDetails.photos
+        photoAdapter.notifyDataSetChanged()
+
+        if (photoAdapter.itemCount < 1) {
+            root.findViewById<View>(R.id.label_photos).visibility = View.GONE
+            root.findViewById<View>(R.id.recycler_photos).visibility = View.GONE
+        }
+
+        if (locationDetails.about.isNullOrBlank()) {
+            root.findViewById<View>(R.id.label_about).visibility = View.GONE
+            root.findViewById<View>(R.id.text_about).visibility = View.GONE
+        } else {
+            root.findViewById<TextView>(R.id.text_about).text = locationDetails.about
+        }
+
+        // Schedule
+//            if (it.phone.isNullOrBlank()) {
+//                root.findViewById<View>(R.id.icon_phone).visibility = View.GONE
+//                root.findViewById<View>(R.id.text_phone).visibility = View.GONE
+//            } else {
+//                root.findViewById<TextView>(R.id.text_schedule).text = it.scheduleString
+//            }
+
+        if (locationDetails.phone.isNullOrBlank()) {
+            root.findViewById<View>(R.id.icon_phone).visibility = View.GONE
+            root.findViewById<View>(R.id.text_phone).visibility = View.GONE
+        } else {
+            root.findViewById<TextView>(R.id.text_phone).text = locationDetails.phone
+        }
+
+        if (locationDetails.address.isNullOrBlank()) {
+            root.findViewById<View>(R.id.icon_pin).visibility = View.GONE
+            root.findViewById<View>(R.id.text_address).visibility = View.GONE
+        } else {
+            root.findViewById<TextView>(R.id.text_address).text = locationDetails.address
+        }
+
+        reviewAdapter.data = locationDetails.reviews
+        reviewAdapter.notifyDataSetChanged()
+
+        if (reviewAdapter.itemCount < 1) {
+            root.findViewById<View>(R.id.layout_reviews).visibility = View.GONE
+        }
     }
 }
