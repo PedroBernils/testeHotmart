@@ -3,13 +3,14 @@ package com.pbernils.testehotmart
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.pbernils.testehotmart.model.Location
 
 class MainViewModel: ViewModel() {
 
-    private val _locationId = MutableLiveData<Int>()
-    val locationId: LiveData<Int> = _locationId
+    private val _location = MutableLiveData<Location>()
+    val location: LiveData<Location> = _location
 
-    fun storeLocationId(id: Int) {
-        _locationId.value = id
+    fun storeLocation(location: Location) {
+        _location.value = location
     }
 }

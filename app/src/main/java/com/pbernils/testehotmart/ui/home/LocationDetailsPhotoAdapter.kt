@@ -7,6 +7,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.pbernils.testehotmart.R
 import com.pbernils.testehotmart.utils.Misc
+import kotlinx.android.synthetic.main.item_location_details_photo_cell.view.*
 
 class LocationDetailsPhotoAdapter: RecyclerView.Adapter<LocationDetailsPhotoAdapter.PhotoHolder>() {
 
@@ -27,9 +28,9 @@ class LocationDetailsPhotoAdapter: RecyclerView.Adapter<LocationDetailsPhotoAdap
 
     inner class PhotoHolder(item: View): RecyclerView.ViewHolder(item) {
 
-        private val spacerLeft = item.findViewById<View>(R.id.spacer_left)
-        private val photoImage = item.findViewById<ImageView>(R.id.photo)
-        private val spacerRight = item.findViewById<View>(R.id.spacer_right)
+        private val spacerLeft = item.spacer_left
+        private val photoImage = item.photo
+        private val spacerRight = item.spacer_right
 
         fun bind(position: Int) {
 

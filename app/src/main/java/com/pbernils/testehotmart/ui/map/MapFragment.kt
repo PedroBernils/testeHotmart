@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.appbar.MaterialToolbar
 import com.pbernils.testehotmart.R
 import com.pbernils.testehotmart.custom.ToolbarFragment
+import kotlinx.android.synthetic.main.fragment_map.view.*
 
 class MapFragment : ToolbarFragment() {
 
@@ -24,12 +25,12 @@ class MapFragment : ToolbarFragment() {
         mapViewModel =
                 ViewModelProvider(this).get(MapViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_map, container, false)
-        val toolbar = root.findViewById<MaterialToolbar>(R.id.toolbar)
+        val toolbar = root.toolbar
         toolbar.title = getString(R.string.title_map)
 
         setupToolbar(root)
 
-        val textView: TextView = root.findViewById(R.id.text_map)
+        val textView: TextView = root.text_map
         mapViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })

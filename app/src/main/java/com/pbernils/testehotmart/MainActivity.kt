@@ -1,7 +1,6 @@
 package com.pbernils.testehotmart
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
@@ -10,7 +9,9 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.pbernils.testehotmart.model.Location
 import com.pbernils.testehotmart.utils.Misc
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+        val navView: BottomNavigationView = nav_view
 
         val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
@@ -35,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         )
 
         val height = Misc.getNavigationBarHeight(this)
-        val navColor = findViewById<View>(R.id.navigation_bar_color)
+        val navColor = navigation_bar_color
         val params = navColor.layoutParams
         params.height = height
         navColor.layoutParams = params
@@ -44,11 +45,11 @@ class MainActivity : AppCompatActivity() {
         navView.itemIconTintList = null
     }
 
-    fun storeLocationId(id: Int) {
-        mainViewModel.storeLocationId(id)
+    fun storeLocation(location: Location) {
+        mainViewModel.storeLocation(location)
     }
 
-    fun getLocationId(): LiveData<Int> {
-        return mainViewModel.locationId
+    fun getLocationId(): LiveData<Location> {
+        return mainViewModel.location
     }
 }

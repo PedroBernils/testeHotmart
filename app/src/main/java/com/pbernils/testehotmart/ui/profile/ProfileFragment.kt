@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.appbar.MaterialToolbar
 import com.pbernils.testehotmart.R
 import com.pbernils.testehotmart.custom.ToolbarFragment
+import kotlinx.android.synthetic.main.fragment_profile.view.*
 
 class ProfileFragment : ToolbarFragment() {
 
@@ -24,12 +25,12 @@ class ProfileFragment : ToolbarFragment() {
         profileViewModel =
                 ViewModelProvider(this).get(ProfileViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_profile, container, false)
-        val toolbar = root.findViewById<MaterialToolbar>(R.id.toolbar)
+        val toolbar = root.toolbar
         toolbar.title = getString(R.string.title_profile)
 
         setupToolbar(root)
 
-        val textView: TextView = root.findViewById(R.id.text_notifications)
+        val textView: TextView = root.text_notifications
         profileViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
