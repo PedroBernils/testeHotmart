@@ -14,10 +14,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     private val locationService: LocationService = RetrofitHelper.getRetrofit().create(LocationService::class.java)
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "Home"
-    }
-
     private val _locationList = MutableLiveData<LocationList>()
     val locationList: LiveData<LocationList> = _locationList
 

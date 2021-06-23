@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.pbernils.testehotmart.R
 import com.pbernils.testehotmart.utils.Misc
 
-class LocationDetailsPhotoAdapter(): RecyclerView.Adapter<LocationDetailsPhotoAdapter.PhotoHolder>() {
+class LocationDetailsPhotoAdapter: RecyclerView.Adapter<LocationDetailsPhotoAdapter.PhotoHolder>() {
+
+    var data: List<String>? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_location_details_photo_cell, parent, false)
@@ -20,7 +22,7 @@ class LocationDetailsPhotoAdapter(): RecyclerView.Adapter<LocationDetailsPhotoAd
     }
 
     override fun getItemCount(): Int {
-        return 7
+        return data?.size ?: 0
     }
 
     inner class PhotoHolder(item: View): RecyclerView.ViewHolder(item) {

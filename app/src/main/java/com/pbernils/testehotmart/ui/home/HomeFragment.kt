@@ -63,6 +63,7 @@ class HomeFragment : ToolbarFragment() {
             locationAdapter.notifyDataSetChanged()
             root.findViewById<View>(R.id.progress_circular).visibility = View.GONE
             root.findViewById<View>(R.id.error_view).visibility = View.GONE
+            root.findViewById<View>(R.id.recycler_view).visibility = View.VISIBLE
         })
 
         homeViewModel.errorMessage.observe(viewLifecycleOwner, Observer {

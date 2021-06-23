@@ -76,10 +76,12 @@
         style="@style/LocationDetailsBodySmallerText"
         android:layout_marginStart="10.5dp"
         android:layout_marginTop="18dp"
-        android:layout_width="wrap_content"
+        android:layout_marginEnd="@dimen/details_margin"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@+id/icon_time"
         app:layout_constraintTop_toBottomOf="@id/text_about"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:text="seg a sex: 7h às 23h\nsáb e dom: 8h às 20h" />
 
     <ImageView
@@ -98,10 +100,12 @@
         style="@style/LocationDetailsBodySmallerText"
         android:layout_marginStart="11dp"
         android:layout_marginTop="22dp"
-        android:layout_width="wrap_content"
+        android:layout_marginEnd="@dimen/details_margin"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@+id/icon_time"
         app:layout_constraintTop_toBottomOf="@id/text_schedule"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:text="+55 31 98892 5338" />
 
     <ImageView
@@ -120,9 +124,11 @@
         style="@style/LocationDetailsBodySmallerText"
         android:layout_marginStart="11dp"
         android:layout_marginTop="19dp"
-        android:layout_width="wrap_content"
+        android:layout_marginEnd="@dimen/details_margin"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@+id/icon_time"
         app:layout_constraintTop_toBottomOf="@id/text_phone"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:text="Rua do ouro, 297 - Serra\nBelo Horizonte - MG" />
 </androidx.constraintlayout.widget.ConstraintLayout>
