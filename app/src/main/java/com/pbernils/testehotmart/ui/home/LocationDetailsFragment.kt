@@ -1,7 +1,7 @@
 package com.pbernils.testehotmart.ui.home
 
+import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.AppBarLayout
-import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.appbar.MaterialToolbar
 import com.pbernils.testehotmart.MainActivity
 import com.pbernils.testehotmart.R
@@ -141,12 +140,15 @@ class LocationDetailsFragment : ToolbarFragment() {
         }
 
         // Schedule
-//            if (it.phone.isNullOrBlank()) {
-//                root.findViewById<View>(R.id.icon_phone).visibility = View.GONE
-//                root.findViewById<View>(R.id.text_phone).visibility = View.GONE
-//            } else {
-//                root.findViewById<TextView>(R.id.text_schedule).text = it.scheduleString
-//            }
+        val schedule = locationDetails.schedule
+        schedule.nameDays(activity as Context)
+        val string = schedule.getScheduleString(activity as Context)
+        if (string.isNullOrBlank()) {
+            root.findViewById<View>(R.id.icon_time).visibility = View.GONE
+            root.findViewById<View>(R.id.text_schedule).visibility = View.GONE
+        } else {
+            root.findViewById<TextView>(R.id.text_schedule).text = string
+        }
 
         if (locationDetails.phone.isNullOrBlank()) {
             root.findViewById<View>(R.id.icon_phone).visibility = View.GONE

@@ -15,6 +15,17 @@
     <string name="label_about">Sobre</string>
     <string name="label_reviews">Reviews</string>
     <string name="btn_all_reviews">ver todos os %d reviews</string>
+    <string name="sunday">dom</string>
+    <string name="monday">seg</string>
+    <string name="tuesday">ter</string>
+    <string name="wednesday">qua</string>
+    <string name="thursday">qui</string>
+    <string name="friday">sex</string>
+    <string name="saturday">sáb</string>
+    <string name="text_all_days">Todos os dias: %s às %s</string>
+    <string name="text_day_to_day">%s a %s: %s às %s</string>
+    <string name="text_day_and_day">%s e %s: %s às %s</string>
+    <string name="text_solo_day">%s: %s às %s</string>
 
     <!--    Error-->
     <string name="error_title">Erro</string>
