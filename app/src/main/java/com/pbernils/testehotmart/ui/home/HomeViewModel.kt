@@ -1,20 +1,58 @@
 package com.pbernils.testehotmart.ui.home
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.*
+import com.google.gson.JsonParseException
+import com.pbernils.testehotmart.R
+import com.pbernils.testehotmart.api.LocationService
+import com.pbernils.testehotmart.api.RetrofitHelper
+import com.pbernils.testehotmart.model.LocationList
+import kotlinx.coroutines.launch
+import java.net.UnknownHostException
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(application: Application) : AndroidViewModel(application) {
+
+    private val locationService: LocationService = RetrofitHelper.getRetrofit().create(LocationService::class.java)
 
     private val _text = MutableLiveData<String>().apply {
         value = "Home"
     }
 
-    val locationList = ArrayList<String>()
+    private val _locationList = MutableLiveData<LocationList>()
+    val locationList: LiveData<LocationList> = _locationList
 
-    val text: LiveData<String> = _text
+    private val _errorMessage = MutableLiveData<String>()
+    val errorMessage:LiveData<String> = _errorMessage
 
-    fun changeText(text: String) {
-        _text.value = text
+    private suspend fun getLocationsList() {
+
+        try {
+
+            val call = locationService.getLocationList()
+            if (call.isSuccessful) {
+                call.body()?.let {
+                    _locationList.value = call.body()
+                }
+            } else {
+                _errorMessage.value = getString(R.string.error_message_general)
+            }
+
+        } catch (e: UnknownHostException) {
+            _errorMessage.value = getString(R.string.error_message_no_connection)
+        } catch (e: JsonParseException) {
+            _errorMessage.value = getString(R.string.error_message_general)
+        } catch (e: Exception) {
+            _errorMessage.value = getString(R.string.error_message_unexpected)
+        }
+    }
+
+    fun fetchLocationList() {
+        viewModelScope.launch {
+            getLocationsList()
+        }
+    }
+
+    private fun getString(resId: Int): String {
+        return getApplication<Application>().getString(resId)
     }
 }

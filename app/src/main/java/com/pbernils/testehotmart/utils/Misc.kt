@@ -29,6 +29,15 @@ object Misc {
         return result
     }
 
+    fun getNavigationBarHeight(context: Context): Int {
+        var result = 0
+        val resourceId: Int = context.resources.getIdentifier("navigation_bar_height", "dimen", "android")
+        if (resourceId > 0) {
+            result = context.resources.getDimensionPixelSize(resourceId)
+        }
+        return result
+    }
+
     fun convertDpToPixel(dp: Float, context: Context?): Float {
         return if (context != null) {
             val resources = context.resources

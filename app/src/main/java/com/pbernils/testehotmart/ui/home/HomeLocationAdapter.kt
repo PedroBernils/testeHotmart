@@ -6,17 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.pbernils.testehotmart.R
+import com.pbernils.testehotmart.model.Location
 import com.pbernils.testehotmart.utils.Misc
-import kotlin.random.Random
+import com.pbernils.testehotmart.utils.RatingHelper
 
 class HomeLocationAdapter(
     private val context: Context,
-    var data:  ArrayList<String>,
-    private val onItemClicked: (View) -> Unit
+    private val onItemClicked: (Int) -> Unit
 ): RecyclerView.Adapter<HomeLocationAdapter.LocationHolder>() {
+
+    var data: List<Location>? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LocationHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_home_location_cell, parent, false)
@@ -28,29 +29,41 @@ class HomeLocationAdapter(
     }
 
     override fun getItemCount(): Int {
-        return 12
+        return data?.size ?: 0
     }
 
-    inner class LocationHolder(item: View): RecyclerView.ViewHolder(item) {
+    inner class LocationHolder(val item: View): RecyclerView.ViewHolder(item) {
 
-        private var color = 0
         private val photo = item.findViewById<ImageView>(R.id.location_photo)
         private val name = item.findViewById<TextView>(R.id.location_name)
         private val type = item.findViewById<TextView>(R.id.location_type)
         private val rating = item.findViewById<TextView>(R.id.location_rating)
-        private val star1 = itemView.findViewById<ImageView>(R.id.rating_1)
-        private val star2 = itemView.findViewById<ImageView>(R.id.rating_2)
-        private val star3 = itemView.findViewById<ImageView>(R.id.rating_3)
-        private val star4 = itemView.findViewById<ImageView>(R.id.rating_4)
-        private val star5 = itemView.findViewById<ImageView>(R.id.rating_5)
+        private val stars = listOf<ImageView>(
+            itemView.findViewById(R.id.rating_1),
+            itemView.findViewById(R.id.rating_2),
+            itemView.findViewById(R.id.rating_3),
+            itemView.findViewById(R.id.rating_4),
+            itemView.findViewById(R.id.rating_5)
+        )
 
         init {
             item.setOnClickListener {
-                onItemClicked(photo)
+                onItemClicked(adapterPosition)
             }
         }
 
         fun bind() {
+
+            var location = data!![adapterPosition]
+
+            location.photo?: photo.setBackgroundColor(Misc.getRandomColor(context))
+
+            name.text = location.name
+            type.text = location.type
+            val ratingValue = location.rating
+            rating.text = "$ratingValue"
+
+            RatingHelper.displayRating(ratingValue.toInt(), stars)
 
             if (adapterPosition % 2 == 0) {
                 var layoutParams = photo.layoutParams

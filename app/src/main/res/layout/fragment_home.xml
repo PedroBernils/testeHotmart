@@ -21,6 +21,18 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <ProgressBar
+        android:id="@+id/progress_circular"
+        android:indeterminateTint="@color/topaz"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <include
+        android:id="@+id/error_view"
+        android:visibility="gone"
+        layout="@layout/item_error_view" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
@@ -32,5 +44,4 @@
         app:spanCount="2"
         tools:itemCount="13"
         tools:listitem="@layout/item_home_location_cell" />
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

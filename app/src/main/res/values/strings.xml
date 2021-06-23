@@ -15,4 +15,11 @@
     <string name="label_about">Sobre</string>
     <string name="label_reviews">Reviews</string>
     <string name="btn_all_reviews">ver todos os %d reviews</string>
+
+    <!--    Error-->
+    <string name="error_title">Erro</string>
+    <string name="error_message_general">Erro ao carregar as informações, tente novamente</string>
+    <string name="error_message_no_connection">Verifique a sua conexão e tente novamente</string>
+    <string name="error_message_unexpected">Um erro inesperado aconteceu, tudo é possível a partir de agora</string>
+    <string name="error_btn_reload">Recarregar</string>
 </resources>

@@ -1,6 +1,6 @@
 package com.pbernils.testehotmart.utils
 
-object Url {
+object BasicData {
 
     val BASE_URL = "https://hotmart-mobile-app.herokuapp.com/"
 }

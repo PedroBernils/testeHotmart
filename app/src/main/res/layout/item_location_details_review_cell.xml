@@ -19,7 +19,7 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/avatar"
-        android:src="@color/aqua_green"
+        android:src="@color/topaz"
         android:scaleType="centerCrop"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -116,7 +116,7 @@
 
         <TextView
             android:id="@+id/review_body"
-            android:text="Bacon ipsum dolor amet hamburger tri-tip capicola rump. Pig chicken ball tip flank, turducken hamburger turkey prosciutto jerky beef ribs tenderloin pancetta pork chop kielbasa ribeye."
+            android:text="Body"
             android:textColor="@color/brownish_gray"
             style="@style/LocationDetailsReviewBody"
             android:layout_width="match_parent"
